@@ -4,7 +4,7 @@ const events = require('./events'); // Monitor the system for events …
 
 // - Drivers Module
 
-events.on('pickup', pickUp); // On the ‘pickup’ event … 
+events.on('pickup', pickUp); // On the ‘pickup’ event … // callback 
 events.on('in-transit', inTransit);
 
 function pickUp(payload) {
@@ -12,7 +12,6 @@ function pickUp(payload) {
     // console.log(`DRIVER: picked up ${payload.orderId}`); // Log “DRIVER: picked up [ORDER_ID]” to the console.
     events.emit('in-transit', payload); // Emit an ‘in-transit’ event with the payload you received
   }, 1000); // Wait 1 second
-
 
 }
 

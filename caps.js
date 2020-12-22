@@ -40,3 +40,15 @@ events.on('delivered', (payload) => {
 
 // Logs every event to the console with a timestamp and the event payload
 // i.e. “EVENT {}”
+
+
+// alternative option 
+
+// events.on('pickup', (payload) => logEvent('pickup', payload));
+// events.on('in-transit', (payload) => logEvent('in-transit', payload));
+// events.on('delivered', (payload) => logEvent('delivered', payload));
+
+// function logEvent(event, payload) {
+//   const time = new Date().toString();
+//   console.log({ event, time, payload })
+// }
