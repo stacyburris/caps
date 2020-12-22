@@ -2,6 +2,12 @@
 
 ## Author: Stacy Burris
 
+### Links and Resources
+
++ [Pull Request](https://github.com/stacyburris/caps/pull/1)
++ [GitHub](https://github.com/stacyburris/caps)
++ [ci/cd](https://github.com/stacyburris/caps/actions)
+
 ### Setup
 
 .env requirements
@@ -54,10 +60,13 @@ EVENT: {
   }
 }
 ```
-### Tests 
+
+### Tests
+
 Unit Tests: npm test
 
 ### UML
+
 + (Created with diagrams)
 
 + ![uml-lab11](uml-lab11.png)

@@ -32,7 +32,7 @@ function inTransit(payload) {
 
 events.on('in-transit', inDelivery);
 
-function delivered(payload) {
+function inDelivery(payload) {
   console.log(`DRIVER: delivered ${payload.orderId}`);
 }
 

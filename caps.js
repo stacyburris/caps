@@ -29,7 +29,6 @@ events.on('in-transit', (payload) => {
 });
 
 events.on('delivered', (payload) => {
-  console.log(`VENDOR: Thank you for ordering ${payload.orderId}`);
   console.log('EVENT:', {
     event: 'delivered',
     time: new Date(),
