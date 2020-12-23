@@ -4,9 +4,9 @@
 
 ### Links and Resources
 
-+ [Pull Request]()
++ [Pull Request](https://github.com/stacyburris/caps/pull/3)
 + [GitHub](https://github.com/stacyburris/caps)
-+ [ci/cd]()
++ [ci/cd](https://github.com/stacyburris/caps/actions)
 
 ### Setup
 
