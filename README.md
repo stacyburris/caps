@@ -4,9 +4,9 @@
 
 ### Links and Resources
 
-+ [Pull Request](https://github.com/stacyburris/caps/pull/1)
++ [Pull Request]()
 + [GitHub](https://github.com/stacyburris/caps)
-+ [ci/cd](https://github.com/stacyburris/caps/actions)
++ [ci/cd]()
 
 ### Setup
 
@@ -16,15 +16,21 @@
  "dependencies": {
     "dotenv": "^8.2.0",
     "faker": "^5.1.0",
-    "jest": "^26.6.3"
+    "jest": "^26.6.3",
+      "socket.io": "^2.3.0",
+    "socket.io-client": "^2.3.1"
   }
   ```
 
 ### Running the app
 
-+ nodemon or node caps.js
++ Terminals
+  + node caps.js
+  + node vendor.js
+  + node driver.js
 
 ### Console Return Example
+
 ```
 EVENT: {
   event: 'pickup',
@@ -69,4 +75,5 @@ Unit Tests: npm test
 
 + (Created with diagrams)
 
-+ ![uml-lab11](uml-lab11.png)
++ [uml-lab11](/assets/uml-lab11.png)
++ [uml-lab12](/assets/uml-lab12.jpg)
