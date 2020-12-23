@@ -21,7 +21,7 @@ function pickUp(payload) {
   setTimeout(() => {
     socket.emit('delivered', payload); // Emit a ‘delivered’ event with the same payload  
     console.log(`Delivered Order ${payload.orderId}`); // Log “delivered” to the console
-    console.log(`Thank you for delivering ${payload.orderId}`);
+    //console.log(`Thank you for delivering ${payload.orderId}`);
   }, 3000); // Wait 3 seconds
 }
 

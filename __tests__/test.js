@@ -1,10 +1,13 @@
 'use strict';
 
-const vendor = require('../vendor');
-const driver = require('../driver');
-const events = require('../events');
+const vendor = require('../vendor/vendor');
+const driver = require('../driver/driver');
+const caps = require('../caps');
+//const socket = io.connect(host);
+// const events = require('../events');
 
 describe('Console Logs', () => {
+  jest.useFakeTimers();
   let consoleSpy;
   beforeEach(() => {
     consoleSpy = jest.spyOn(console, 'log').mockImplementation();
@@ -15,17 +18,22 @@ describe('Console Logs', () => {
   });
 
   it('Delivered console.log is called', () => {
-    events.emit('delivered', { orderId: 1 });
+    caps.emit('delivered', { orderId: 1 });
     expect(consoleSpy).toBeCalled();
   });
 
-  it('Pickup console.log is called', () => {
-    events.emit('pickup', { orderId: 1 });
+  it('Pickup console.log is called ', () => {
+    socket.emit('pickup', { orderId: 1 });
     expect(consoleSpy).toBeCalled();
   });
 
   it('In-transit console.log is called', () => {
-    events.emit('in-transit', { orderId: 1 });
+    caps.emit('in-transit', { orderId: 1 });
     expect(consoleSpy).toBeCalled();
+  });
+  it('In-transit console.log is called!!!', () => {
+
+    caps.emit('in-transit', { orderId: 3 });
+    expect(setTimeout).toHaveBeenCalledTimes(3);
   });
 });
