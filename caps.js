@@ -10,13 +10,14 @@ const io = require('socket.io')(port);
 const caps = io.of('/caps');
 
 
-
+// general HUB
 io.on('connection', (socket) => {
   console.log('Connection success to the BRAIN/main socket', socket.id);
 });
 
 caps.on('connection', (socket) => {
   socket.on('join', room => {
+    console.log(`${socket.id} is joining ${room}`);
     socket.join(room);
   });
 

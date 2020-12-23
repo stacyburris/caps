@@ -2,27 +2,25 @@
 
 
 require('dotenv').config();
-
+// bring in client
 const io = require('socket.io-client');
+// connecting to the caps namespace
 const host = "http://localhost:3000/caps";
 const socket = io.connect(host);
 
-
+// library
 const faker = require('faker');
-const storeName = process.env.STORE; // Declare your store name (perhaps in a .env file, so that this module is re-usable)
+const storeName = process.env.STORE;
 
 
-// Vendor Module
 
+// put the vendor in a private room where they are only listening for events that come from them
 socket.emit('join', storeName);
 
 socket.on('delivered', (payload) => {
   console.log(`Thank you for delivering ${payload.orderId}`);
 }); // Whenever the ‘delivered’ event occurs
 
-// function thanks(payload) {
-//   console.log(`Thank you for delivering ${payload.orderId}`);
-// }
 
 setInterval(() => {
   //console.log('STORENAME', storeName);
@@ -36,4 +34,3 @@ setInterval(() => {
 
 }, 5000); // Every 5 seconds, simulate a new customer order
 
-//module.exports = thanks;
