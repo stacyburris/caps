@@ -1,4 +1,4 @@
-# LAB - 11 - Event Driven Applications
+# LAB - 13 - Message Queues
 
 ## Author: Stacy Burris
 
@@ -11,7 +11,7 @@
 ### Setup
 
 .env requirements
-  + `STORE=fancy Cat Dresses`
+  + `port=3000`
 ```
  "dependencies": {
     "dotenv": "^8.2.0",
@@ -25,8 +25,9 @@
 ### Running the app
 
 + Terminals
-  + node caps.js
-  + node vendor.js
+  + node queue-server.js
+  + node flowers206.js
+  + node widgets.js
   + node driver.js
 
 ### Console Return Example
@@ -36,7 +37,7 @@ EVENT: {
   event: 'pickup',
   time: 2020-12-22T00:47:22.157Z,
   payload: {
-    storeName: 'fancy Cat Dresses',
+    storeName: '1-206-flowers',
     orderId: '347c5f6c-e1d9-4cac-a1f6-e4ebf3749390',
     customerName: 'Heather Hayes',
     address: 'New Rickie, New Hampshire'
@@ -47,7 +48,7 @@ EVENT: {
   event: 'in-transit',
   time: 2020-12-22T00:47:23.165Z,
   payload: {
-    storeName: 'fancy Cat Dresses',
+    storeName: 'acme-widgets',
     orderId: '347c5f6c-e1d9-4cac-a1f6-e4ebf3749390',
     customerName: 'Heather Hayes',
     address: 'New Rickie, New Hampshire'
@@ -59,7 +60,7 @@ EVENT: {
   event: 'delivered',
   time: 2020-12-22T00:47:25.162Z,
   payload: {
-    storeName: 'fancy Cat Dresses',
+    storeName: '1-206-flowers',
     orderId: '347c5f6c-e1d9-4cac-a1f6-e4ebf3749390',
     customerName: 'Heather Hayes',
     address: 'New Rickie, New Hampshire'
