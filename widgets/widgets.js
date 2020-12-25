@@ -1,7 +1,5 @@
 'use strict';
 
-'use strict';
-
 require('dotenv').config();
 const client = require('socket.io-client');
 const socket = client.connect('http://localhost:3000/caps');
@@ -9,9 +7,12 @@ const faker = require('faker');
 const storeName = 'acme-widgets';
 
 
-console.log('Connection success in the client');
+console.log('Connection success to the client acme-widgets');
 
-socket.emit('getAll');
+let vendorsPayload = { messageID: storeName, event: 'delivered' };
+
+socket.emit('getAll', vendorsPayload);
+
 // put the vendor in a private room where they are only listening for events that come from them
 socket.emit('join', storeName);
 
@@ -19,12 +20,12 @@ socket.on('connection', () => {
   console.log('connection to client');
 });
 
-socket.on('delivered', messages => {
-  console.log(`Thank you for delivering ${messages.orderId}`);
+socket.on('messages', messages => {
+  //console.log(`Thank you for delivering ${messages.orderId}`);
+  console.log(`Receiving Flowers message ${messages.payload}`);
   //console.log('in client with new messages', messages);
   socket.emit('received', messages)
-})
-
+});
 
 
 setInterval(() => {
@@ -38,3 +39,5 @@ setInterval(() => {
   socket.emit('pickup', newCustomerOrder) // Emit a ‘pickup’ event and attach the fake order as payload
 
 }, 5000); // Every 5 seconds, simulate a new customer order
+
+/////
