@@ -8,7 +8,7 @@
 
 ### Links and Resources
 
-+ [Pull Request](https://github.com/stacyburris/caps/pull/3)
++ [Pull Request](https://github.com/stacyburris/caps/pull/6)
 + [GitHub](https://github.com/stacyburris/caps)
 + [ci/cd](https://github.com/stacyburris/caps/actions)
 
