@@ -1,5 +1,6 @@
 'use strict';
 
+require('dotenv').config();
 const uuid = require('uuid').v4;
 const port = process.env.PORT || 3000;
 const io = require('socket.io')(port);
@@ -9,7 +10,9 @@ const queue = {
   messages: {}
 };
 
+// namespace
 caps.on('connection', (socket) => {
+
   socket.on('join', room => {
     console.log(`${socket.id} is joining ${room}`);
     socket.join(room);
