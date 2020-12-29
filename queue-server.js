@@ -1,10 +1,58 @@
 'use strict';
 
 require('dotenv').config();
-const uuid = require('uuid').v4;
-const port = process.env.PORT || 3000;
-const io = require('socket.io')(port);
+const uuid = require('uuid').v4;   // !!!
+const port = process.env.PORT || 3000; // !!
+const io = require('socket.io')(port);  // !!
 const caps = io.of('/caps');
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+// a queue server hub that keeps a log of the delivery, keyed by retailer and event type
+//broadcasts "Delivery Confirmations" to retailers
+
+const messages = {}  //!! queue
+
+/**
+ * (payload)
+{
+  pickup: {
+    driver: {
+      23: {
+        store: companyID,
+        code: 387487147u,
+        orderID: 93r832939,
+        customer: popeye
+        address: 125 place west
+      }
+    }
+  },
+  delivered: {
+
+  }
+} 
+ */
+
+const caps = io.of('/caps');
+caps.on('connection', socket => {
+  console.log(`${socket.id} is joining name space caps`);
+
+  // listening for pickup event
+  socket.on('pickup', message => {
+    let messageID = uuid();
+    // put the message in my message queue
+    messages['pickup']['driver'][messageID] = message.payload;
+    // using variables so can use bracket notation
+
+    // send a confirmation
+    caps.in('driver').emit('pickup', { messageID, payload: message.payload })
+
+  })
+
+})
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const queue = {
   messages: {}
@@ -59,4 +107,5 @@ caps.on('connection', (socket) => {
     caps.to(payload.storeName).emit('in-transit', payload);
   });
 
-})
+});
+

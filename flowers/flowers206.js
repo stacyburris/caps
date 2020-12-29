@@ -6,6 +6,25 @@ const socket = client.connect('http://localhost:3000/caps');
 const faker = require('faker');
 const storeName = '1-206-flowers';
 
+/////////////////demo in class 12/29
+const faker = require('faker');
+
+
+const Queue = require('../queue-server');
+const companyID = '1-206-flowers';
+const queue = new Queue(companyID);
+
+setInterval(() => {
+  queue.trigger('pickup', {
+    storeName: storeName, // storeName, orderId, customerName, address
+    orderId: faker.random.uuid(),
+    customerName: faker.name.findName(),
+    address: `${faker.address.city()}, ${faker.address.state()}`
+  })
+}, 1000);
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 console.log('Connection success to the client 1-206-flowers');
 
